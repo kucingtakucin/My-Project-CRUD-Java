@@ -12,7 +12,10 @@ public class Main {
         String pilihanUser;
         boolean lanjutkan = true;
 
+        Utility.clearScreen();
+        Utility.sistemLogin();
         while (lanjutkan) {
+            Utility.clearScreen();
             System.out.println("====== DATABASE TIKET KERETA API STASIUN SOLO BALAPAN ======");
             System.out.println("1.\t List seluruh tiket");
             System.out.println("2.\t Cari tiket");
@@ -57,6 +60,7 @@ public class Main {
                 default :
                     break;
             }
+            lanjutkan = Utility.GET_YES_OR_NO("Apakah kamu ingin melanjutkan?");
         }
     }
 }
