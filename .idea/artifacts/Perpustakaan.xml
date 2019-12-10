@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="Perpustakaan">
+    <output-path>$PROJECT_DIR$/out/artifacts/Perpustakaan</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Perpustakaan" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/Perpustakaan/web/WEB-INF/appengine-web.xml" />
+      </element>
+    </root>
+  </artifact>
+</component>

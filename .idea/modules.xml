@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Inventori Gudang/Inventori Gudang.iml" filepath="$PROJECT_DIR$/Inventori Gudang/Inventori Gudang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Perpustakaan/Perpustakaan.iml" filepath="$PROJECT_DIR$/Perpustakaan/Perpustakaan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project CRUD.iml" filepath="$PROJECT_DIR$/Project CRUD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tiket/Tiket.iml" filepath="$PROJECT_DIR$/Tiket/Tiket.iml" />
+    </modules>
+  </component>
+</project>

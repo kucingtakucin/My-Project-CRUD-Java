@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="Tiket">
+    <output-path>$PROJECT_DIR$/out/artifacts/Tiket</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Tiket" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/Tiket/web/WEB-INF/appengine-web.xml" />
+      </element>
+    </root>
+  </artifact>
+</component>
