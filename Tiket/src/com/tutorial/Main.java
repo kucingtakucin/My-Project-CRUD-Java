@@ -2,7 +2,9 @@ package com.tutorial;
 
 import java.util.*;
 import java.io.*;
+import javax.swing.*;
 
+import CRUD.*;
 public class Main {
 
     public static void main(String[] MbahPutih) throws IOException {
@@ -26,26 +28,31 @@ public class Main {
                     System.out.println("========================");
                     System.out.println("====== LIST TIKET ======");
                     System.out.println("========================");
+                    Operasi.listTiket();;
                     break;
                 case "2" :
                     System.out.println("========================");
                     System.out.println("====== CARI TIKET ======");
                     System.out.println("========================");
+                    Operasi.cariTiket();
                     break;
                 case "3" :
                     System.out.println("==========================");
                     System.out.println("====== TAMBAH TIKET ======");
                     System.out.println("==========================");
+                    Operasi.tambahTiket();
                     break;
                 case "4" :
                     System.out.println("==========================");
                     System.out.println("====== UPDATE TIKET ======");
                     System.out.println("==========================");
+                    Operasi.updateTiket();
                     break;
                 case "5" :
                     System.out.println("=========================");
                     System.out.println("====== HAPUS TIKET ======");
                     System.out.println("=========================");
+                    Operasi.hapusTiket();
                     break;
                 default :
                     break;
