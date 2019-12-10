@@ -58,6 +58,8 @@ public class Main {
                     Operasi.hapusTiket();
                     break;
                 default :
+                    System.err.println("\nInput anda tidak ditemukan\nSilahkan pilih 1 s.d 5");
+                    JOptionPane.showMessageDialog(null,"Input anda tidak ditemukan\nSilahkan pilih 1 s.d 5","Wah error nih",JOptionPane.ERROR_MESSAGE);
                     break;
             }
             lanjutkan = Utility.GET_YES_OR_NO("Apakah kamu ingin melanjutkan?");
