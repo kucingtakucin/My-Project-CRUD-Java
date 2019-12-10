@@ -4,8 +4,11 @@ import java.util.*;
 import java.io.*;
 
 import CRUD.*;
+
+import javax.swing.*;
+
 public class Main {
-    
+
     public static void main(String[] MbahPutih) throws IOException {
         Scanner inputUser = new Scanner(System.in);
         String pilihanUser;
@@ -59,6 +62,7 @@ public class Main {
                     break;
                 default:
                     System.err.println("\nInput anda tidak ditemukan\nSilahkan pilih 1 s.d 5");
+                    JOptionPane.showMessageDialog(null,"Input anda tidak ditemukan\nSilahkan pilih 1 s.d 5","Wah error nih",JOptionPane.ERROR_MESSAGE);
             }
 
             lanjutkan = Utility.GET_YES_OR_NO("Apakah anda ingin melanjutkan?"); // Sebagai konfirmasi
