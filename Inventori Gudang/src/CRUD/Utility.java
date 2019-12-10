@@ -101,6 +101,7 @@ public class Utility {
         // equalsIgnoreCase tidak mempedulikan huruf kecil maupun huruf besar
         while (!konfirmasi.equalsIgnoreCase("Y") && !konfirmasi.equalsIgnoreCase("N")) {
             System.err.println("Pilihan kamu salah");
+            JOptionPane.showMessageDialog(null,"Pilihan kamu salah!!!","Wah error nih",JOptionPane.ERROR_MESSAGE);
             System.out.print("\n" + message + " (Y/N) ");
             konfirmasi = inputUser.nextLine();
         }
@@ -115,7 +116,7 @@ public class Utility {
                 System.out.println("\033\143"); // Jika sistem operasi yang kita gunakan adalah Linux/Unix
             }
         } catch (Exception ex) {
-            System.out.println("Wah engga bisa clear screen gais awokwokwowk!!!"); // Selain Windows dan Linux/Unix
+            System.err.println("Wah engga bisa clear screen gais awokwokwowk!!!"); // Selain Windows dan Linux/Unix
         }
     }
 
