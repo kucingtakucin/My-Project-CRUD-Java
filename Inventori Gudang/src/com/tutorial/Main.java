@@ -2,11 +2,9 @@ package com.tutorial;
 
 import java.util.*;
 import java.io.*;
-
-import CRUD.*;
-
 import javax.swing.*;
 
+import CRUD.*;
 public class Main {
 
     public static void main(String[] MbahPutih) throws IOException {
@@ -64,7 +62,6 @@ public class Main {
                     System.err.println("\nInput anda tidak ditemukan\nSilahkan pilih 1 s.d 5");
                     JOptionPane.showMessageDialog(null,"Input anda tidak ditemukan\nSilahkan pilih 1 s.d 5","Wah error nih",JOptionPane.ERROR_MESSAGE);
             }
-
             lanjutkan = Utility.GET_YES_OR_NO("Apakah anda ingin melanjutkan?"); // Sebagai konfirmasi
         }
     }

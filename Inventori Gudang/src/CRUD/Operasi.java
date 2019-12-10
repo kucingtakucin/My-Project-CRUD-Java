@@ -50,7 +50,7 @@ public class Operasi {
 
         // Mengecek database kita (inventory.txt) ada atau tidak
         try {
-            File file = new File("inventory.txt");
+            File file = new File("inventory.txt"); // Untuk mengecek file kita ada atau tidak
         } catch (Exception ex){
             JOptionPane.showMessageDialog(null,"Database tidak ditemukan!!!","Wah error nih",JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(null,"Silakan tambah data terlebih dahulu","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
@@ -238,12 +238,12 @@ public class Operasi {
 
     public static void hapusData() throws IOException{
         // Kita ambil database original (inventory.txt)
-        File database = new File("inventory.txt");
+        File database = new File("inventory.txt"); // Mengecek file kita ada atau tidak
         FileReader fileInput = new FileReader(database);
         BufferedReader bufferedInput = new BufferedReader(fileInput);
 
         // Kita buat temporary database (temporary.txt)
-        File temporary = new File("temporary.txt");
+        File temporary = new File("temporary.txt"); // Mengecek file kita ada atau tidak
         FileWriter fileOutput = new FileWriter(temporary);
         BufferedWriter bufferedOutput = new BufferedWriter(fileOutput);
 
