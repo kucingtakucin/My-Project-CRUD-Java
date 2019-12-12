@@ -46,9 +46,55 @@ public class Operasi {
         System.out.println("--------------------------------------------------------------------------------------------");
     }
 
-    public static void cariTiket() throws IOException{}
+    public static void cariTiket() throws IOException{
+        Scanner inputUser = new Scanner(System.in);
 
-    public static void tambahTiket() throws IOException{}
+        // Mengecek database kita (tiket.txt) ada atau tidak
+        try {
+            File file = new File("tiket.txt");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Database tidak ditemukan!!!","Wah error nih!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Silakan tambah data terlebih dahulu","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
+            tambahTiket();
+            return;
+        }
+
+        // Kita ambil inputan keyword dari user
+        System.out.print("Masukkan kata kunci untuk mencari tiket : ");
+        String cariString = inputUser.nextLine();
+        String[] kataKunci = cariString.split("\\s+");
+
+        // Kita cek keyword di database
+        Utility.cekTiketDiDatabase(kataKunci,true);
+    }
+
+    public static void tambahTiket() throws IOException{
+        FileWriter fileOutput = new FileWriter("tiket.txt",true);
+        BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
+
+        // Mengambil input dari user untuk menambah data
+        Scanner inputUser = new Scanner(System.in);
+        String kereta,kelas,berangkat,tiba,tujuan,harga;
+
+        System.out.print("Masukkann nama kereta : ");
+        kereta = inputUser.nextLine();
+        System.out.print("Masukkan kelas kereta : ");
+        kelas = inputUser.nextLine();
+        System.out.print("Masukkan jam keberangkatan : ");
+        berangkat = inputUser.nextLine();
+        System.out.print("Masukkan jam tiba : ");
+        tiba = inputUser.nextLine();
+        System.out.println("Masukkan stasiun tujuan : ");
+        tujuan = inputUser.nextLine();
+        System.out.println("Masukkan harga tiket : ");
+        harga = inputUser.nextLine();
+
+        // Cek barang di database (tiket.txt)
+//        String[] keywords
+
+
+
+    }
 
     public static void updateTiket() throws IOException{}
 

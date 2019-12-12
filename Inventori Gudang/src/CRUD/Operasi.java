@@ -52,19 +52,19 @@ public class Operasi {
         try {
             File file = new File("inventory.txt"); // Untuk mengecek file kita ada atau tidak
         } catch (Exception ex){
-            JOptionPane.showMessageDialog(null,"Database tidak ditemukan!!!","Wah error nih",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Database tidak ditemukan!!!","Wah error nih!",JOptionPane.ERROR_MESSAGE);
             JOptionPane.showMessageDialog(null,"Silakan tambah data terlebih dahulu","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
             tambahData();
             return;
         }
 
         // Kita ambil inputan keyword dari user
-        System.out.print("Masukan kata kunci untuk mencari barang : ");
+        System.out.print("Masukkan kata kunci untuk mencari barang : ");
         String cariString = inputUser.nextLine();
         String[] kataKunci = cariString.split("\\s+"); // Kita ubah menjadi Array  dengan tipe data String
 
         // Kita cek keyword di database
-        Utility.cekBarangDiDatabase(kataKunci, true);
+        Utility.cekBarangDiDatabase(kataKunci,true);
     }
 
     public static void tambahData() throws IOException{

@@ -6,6 +6,52 @@ import javax.swing.*;
 
 public class Utility {
 
+    protected static boolean cekTiketDiDatabase(String[] kataKunci,boolean isDisplay) throws IOException{
+        FileReader fileInput = new FileReader("tiket.txt");
+        BufferedReader bufferInput = new BufferedReader(fileInput);
+
+        String data = bufferInput.readLine(); // Akan memulai pembacaan file di baris pertama
+        boolean isExist = false; // isExist berfungsi sebagai status apakah keyword kita ada atau tidak
+        int nomorData = 0;
+
+        if (isDisplay) {
+            System.out.print("____________________________________________________________________________________________");
+            System.out.println("\n| No |      Kereta      |   Kelas   | Berangkat |   Tiba   |    Tujuan    |\tHarga");
+            System.out.println("--------------------------------------------------------------------------------------------");
+        }
+
+        while (data != null) {
+            // Cek keywords didalam baris
+            isExist = true;
+            for  (String keyword : kataKunci) {
+                isExist = isExist && data.toLowerCase().contains(keyword.toLowerCase());
+            }
+
+            // Jika keywordsnya cocok/true maka tampilkan
+            if (isExist) {
+                nomorData++;
+                StringTokenizer masukan = new StringTokenizer(data,",");
+
+                masukan.nextToken(); // Kita skip bagian primary keys nya
+                String nomer = String.format("| %2d ",nomorData); // Kita tambahkan nomor secara manual
+                String kereta = String.format("| %-17s",masukan.nextToken()); // Bagian nama kereta
+                String kelas = String.format("| %-10s",masukan.nextToken()); // Bagian kelas kereta
+                String berangkat = String.format("|   %-8s",masukan.nextToken()); // Bagian waktu saat keberangkatan
+                String tiba = String.format("|  %-8s",masukan.nextToken()); // Bagian waktu saat tiba
+                String tujuan = String.format("| %-13s",masukan.nextToken()); // Bagian tujuan
+                String harga = String.format("| %-11s",masukan.nextToken());
+
+                System.out.println(nomer + kereta + kelas + berangkat + tiba + tujuan + harga); // Mencetak data keseluruhan
+            }
+            data = bufferInput.readLine(); // Akan memulai pembacaan file di baris selanjutnya
+        }
+        if (isDisplay) {
+            System.out.println("--------------------------------------------------------------------------------------------");
+
+        }
+        return isExist;
+    }
+
     public static boolean GET_YES_OR_NO(String message) {
         Scanner inputUser = new Scanner(System.in);
         System.out.print("\n" + message + " (Y/N) ");

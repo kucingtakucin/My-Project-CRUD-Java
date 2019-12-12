@@ -7,7 +7,7 @@ import javax.swing.*;
 import CRUD.*;
 public class Main {
 
-    public static void main(String[] MbahPutih) throws IOException {
+    public static void main(String[] InventoryProject) throws IOException {
         Scanner inputUser = new Scanner(System.in);
         String pilihanUser;
         boolean lanjutkan = true;
