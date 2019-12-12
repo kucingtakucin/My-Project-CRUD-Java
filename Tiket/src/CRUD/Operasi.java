@@ -22,7 +22,7 @@ public class Operasi {
 
         // Kita buat header nya secara manual
         System.out.print("____________________________________________________________________________________________");
-        System.out.println("\n| No |      Kereta      |   Kelas   | Berangkat |  Tiba  |\t Harga");
+        System.out.println("\n| No |      Kereta      |   Kelas   | Berangkat |   Tiba   |    Tujuan    |\tHarga");
         System.out.println("--------------------------------------------------------------------------------------------");
 
         String data = bufferInput.readLine(); // Akan memulai pembacaan file di baris pertama
@@ -33,12 +33,13 @@ public class Operasi {
 
             masukan.nextToken(); // Kita skip bagian primary keys nya
             String nomer = String.format("| %2d ",nomor); // Kita tambahkan nomor secara manual
-            String kereta = String.format("| %s",masukan.nextToken()); // Bagian nama kereta
-            String kelas = String.format("| %s",masukan.nextToken()); // Bagian kelas kereta
-            String berangkat = String.format("|%s",masukan.nextToken()); // Bagian waktu saat keberangkatan
-            String tiba = String.format("|%s",masukan.nextToken()); // Bagian waktu saat tiba
-            String harga = String.format("|%s",masukan.nextToken()); // Bagian harga
-            System.out.println(nomer + kereta + kelas + berangkat + tiba + harga); // Mencetak data keseluruhan
+            String kereta = String.format("| %-17s",masukan.nextToken()); // Bagian nama kereta
+            String kelas = String.format("| %-10s",masukan.nextToken()); // Bagian kelas kereta
+            String berangkat = String.format("|   %-8s",masukan.nextToken()); // Bagian waktu saat keberangkatan
+            String tiba = String.format("|  %-8s",masukan.nextToken()); // Bagian waktu saat tiba
+            String tujuan = String.format("| %-13s",masukan.nextToken()); // Bagian tujuan
+            String harga = String.format("| %-11s",masukan.nextToken());
+            System.out.println(nomer + kereta + kelas + berangkat + tiba + tujuan + harga); // Mencetak data keseluruhan
 
             data = bufferInput.readLine(); // Akan memulai pembacaan file di baris selanjutnya
         }
