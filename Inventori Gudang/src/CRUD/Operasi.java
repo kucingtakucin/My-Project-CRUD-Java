@@ -26,7 +26,7 @@ public class Operasi {
         System.out.println("\n| No |\tTahun |\tJenis Barang\t|      Merk     |\tSeri Barang");
         System.out.println("--------------------------------------------------------------------------------------------");
 
-        String data = bufferInput.readLine(); // Akan memulai pembacaaan file di kalimat pertama
+        String data = bufferInput.readLine(); // Akan memulai pembacaaan file di baris pertama
         int nomor = 0;
         while (data != null){ // Jika data tidak kosong, maka kita baca isi nya
             nomor++;
