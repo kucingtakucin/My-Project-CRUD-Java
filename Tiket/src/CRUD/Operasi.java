@@ -90,10 +90,40 @@ public class Operasi {
         harga = inputUser.nextLine();
 
         // Cek barang di database (tiket.txt)
-//        String[] keywords
+        String[] keywords = {kereta + "," + kelas + "," + berangkat + "," + tiba + "," + tujuan + "," + harga}; // Kita ubah menjadi Array
+        System.out.println(Arrays.toString(keywords));
 
+        boolean isExist = Utility.cekTiketDiDatabase(keywords, false);
 
+        // Menulis barang di database (tiket.txt)
+        if (!isExist) {
+            long nomorEntry = Utility.ambilEntry(kereta,kelas) + 1;
 
+            String keretaTanpaSpasi = kereta.replaceAll("\\s+","");
+            String primaryKey = keretaTanpaSpasi + "_" + kelas + "_" + nomorEntry;
+            System.out.println("\n---- Data yang akan anda masukkan : ----");
+            System.out.println("----------------------------------------");
+            System.out.println("Primary key        : " + primaryKey);
+            System.out.println("Nama kereta        : " + kereta);
+            System.out.println("Kelas kereta       : " + kelas);
+            System.out.println("Jam keberangkatan  : " + berangkat);
+            System.out.println("Jam tiba           : " + tiba);
+            System.out.println("Stasiun tujuan     : " + tujuan);
+            System.out.println("Harga tiket        : " + harga);
+
+            boolean isTambah = Utility.GET_YES_OR_NO("Apakah anda ingin menambahka data tersebut?");
+            if (isTambah) {
+                bufferOutput.write(primaryKey + "," + kereta + "," + kelas + "," + berangkat + "," + tiba + "," + tujuan + "," + harga);
+                bufferOutput.newLine();
+                bufferOutput.flush();
+            }
+        } else {
+            System.out.println("Tiket yang anda masukkan sudah tersedia di database dengan data berikut : ");
+            Utility.cekTiketDiDatabase(keywords,true);
+        }
+
+        // Jangan lupa untuk menutup file
+        bufferOutput.close();
     }
 
     public static void updateTiket() throws IOException{}

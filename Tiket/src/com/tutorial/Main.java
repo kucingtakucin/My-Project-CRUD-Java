@@ -31,7 +31,7 @@ public class Main {
                     System.out.println("\n========================");
                     System.out.println("====== LIST TIKET ======");
                     System.out.println("========================");
-                    Operasi.listTiket();;
+                    Operasi.listTiket();
                     break;
                 case "2" :
                     System.out.println("\n========================");

@@ -90,7 +90,7 @@ public class Utility {
             if (penulis.equalsIgnoreCase(dataScanner.next()) && tahun.equalsIgnoreCase(dataScanner.next()) ) {
                 entry = dataScanner.nextInt();
             }
-            data = bufferInput.readLine(); // Akan emulai pembacaan di baris selanjutnya
+            data = bufferInput.readLine(); // Akan memulai pembacaan di baris selanjutnya
         }
         return entry;
     }

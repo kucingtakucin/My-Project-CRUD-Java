@@ -52,6 +52,31 @@ public class Utility {
         return isExist;
     }
 
+    protected static long ambilEntry(String kereta, String kelas) throws IOException{
+        FileReader fileInput = new FileReader("tiket.txt");
+        BufferedReader bufferInput = new BufferedReader(fileInput);
+
+        long entry = 0;
+        String primaryKey;
+        Scanner dataScanner; // Untuk membaca file per kalimat
+        String data = bufferInput.readLine();
+
+        while (data != null) {
+            dataScanner = new Scanner(data);
+            dataScanner.useDelimiter(",");
+            primaryKey = dataScanner.next();
+            dataScanner = new Scanner(primaryKey);
+            dataScanner.useDelimiter("_");
+
+            kereta = kereta.replaceAll("\\s+","");
+            if (kereta.equalsIgnoreCase(dataScanner.next()) && kelas.equalsIgnoreCase(dataScanner.next())) {
+                entry = dataScanner.nextInt();
+            }
+            data = bufferInput.readLine();
+        }
+        return entry;
+    }
+
     public static boolean GET_YES_OR_NO(String message) {
         Scanner inputUser = new Scanner(System.in);
         System.out.print("\n" + message + " (Y/N) ");
