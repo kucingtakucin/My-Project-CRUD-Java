@@ -117,7 +117,7 @@ public class Operasi {
                 bufferOutput.flush(); // Menuliskan di database
             }
         } else {
-            System.out.println("Buku yang anda akan masukan sudah tersedia di database dengan data berikut : ");
+            System.out.println("Buku yang anda akan masukkan sudah tersedia di database dengan data berikut : ");
             Utility.cekBukuDiDatabase(keywords,true);
         }
 
@@ -142,7 +142,7 @@ public class Operasi {
 
         // Kita ambil input dari user
         Scanner inputUser = new Scanner(System.in);
-        System.out.print("\nMasukan nomor buku yang akan diupdate : ");
+        System.out.print("\nMasukkan nomor buku yang akan diupdate : ");
         int updateNum = inputUser.nextInt();
 
         // Tampilkan data yang ingin diupdate
@@ -169,7 +169,7 @@ public class Operasi {
 
                 masukan = new StringTokenizer(data,","); // Kita refresh data
                 String originalData = masukan.nextToken();
-                for(int i=0; i < fieldData.length ; i++) {
+                for (int i = 0; i < fieldData.length ; i++) {
                     boolean isUpdate = Utility.GET_YES_OR_NO("Apakah anda ingin mengubah " + fieldData[i]);
                     originalData = masukan.nextToken();
                     if (isUpdate){
@@ -178,7 +178,6 @@ public class Operasi {
                             System.out.print("Masukkan tahun terbit, format = (YYYY) : ");
                             tempData[i] = Utility.ambilTahun();
                         } else {
-                            inputUser = new Scanner(System.in);
                             System.out.print("\nMasukkan " + fieldData[i] + " baru : ");
                             tempData[i] = inputUser.nextLine();
                         }
@@ -216,7 +215,7 @@ public class Operasi {
                         // Kita bikin primary key lagi
                         long nomorEntry = Utility.ambilEntry(penulis, tahun) + 1;
                         String penulisTanpaSpasi = penulis.replaceAll("\\s+","");
-                        String primaryKey = penulisTanpaSpasi+"_"+tahun+"_"+nomorEntry;
+                        String primaryKey = penulisTanpaSpasi + "_" + tahun + "_" + nomorEntry;
 
                         // Tulis data kedalam database sementara (temporary.txt)
                         bufferedOutput.write(primaryKey + "," + tahun + ","+ penulis +"," + penerbit + ","+judul);

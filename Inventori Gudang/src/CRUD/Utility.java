@@ -16,9 +16,9 @@ public class Utility {
         int nomorData = 0;
 
         if (isDisplay) {
-            System.out.print("____________________________________________________________________________________________");
-            System.out.println("\n| No |\tTahun |\tJenis Barang\t|      Merk     |\tSeri Barang");
-            System.out.println("--------------------------------------------------------------------------------------------");
+            System.out.print("________________________________________________________________________________________________");
+            System.out.println("\n| No |\tTahun |\tJenis Barang\t|      Merk     |             Seri Barang            |  Stok  |");
+            System.out.println("------------------------------------------------------------------------------------------------");
         }
 
         while (data != null) {
@@ -33,18 +33,22 @@ public class Utility {
                 StringTokenizer masukan = new StringTokenizer(data, ",");
 
                 masukan.nextToken(); // Kita skip bagian Primary Keys nya
-                String nomer = String.format("| %2d ",nomorData); // Kita tambahkan nomor secara manual
-                String tahun = String.format("|\t%4s  ",masukan.nextToken()); // Bagian tahun
-                String jenisBarang = String.format("|\t%-16s",masukan.nextToken()); // Bagian jenis barang
-                String Merk = String.format("|     %-10s",masukan.nextToken()); // Bagian merk barang
-                String Seri = String.format("|\t%-30s",masukan.nextToken()); // Bagian seri barang
+                masukan.nextToken(); // Kita skip bagian Supplier nya
+                String nomer = String.format("| %2d ", nomorData); // Kita tambahkan nomor secara manual
+                String stok = String.format("|   %-5s|", masukan.nextToken()); // Bagian stok barang
+                String tahun = String.format("|\t%4s  ", masukan.nextToken()); // Bagian tahun
+                String jenisBarang = String.format("|\t%-16s", masukan.nextToken()); // Bagian jenis barang
+                String Merk = String.format("|     %-10s", masukan.nextToken()); // Bagian merk barang
+                String Seri = String.format("| %-35s", masukan.nextToken()); // Bagian seri barang
 
-                System.out.println(nomer + tahun + jenisBarang + Merk + Seri); // Mencetak data keseluruhan
+                if (isDisplay) {
+                    System.out.println(nomer + tahun + jenisBarang + Merk + Seri + stok); // Mencetak data keseluruhan
+                }
             }
             data = bufferInput.readLine(); // Akan memulai pembacaan file di baris selanjutnya
         }
         if (isDisplay) {
-            System.out.println("--------------------------------------------------------------------------------------------");
+            System.out.println("------------------------------------------------------------------------------------------------");
         }
         return isExist;
     }
@@ -60,6 +64,8 @@ public class Utility {
                 tahunValid = true;
             } catch (Exception ex) {
                 System.out.println("Format tahun yang anda masukan salah (format = YYYY)");
+                JOptionPane.showMessageDialog(null,"Format tahun yang anda masukan salah! (format = YYYY)","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Silahkan masukkan tahun barang lagi!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
                 System.out.print("Silahkan masukkan tahun barang lagi : ");
                 tahunValid = false;
                 tahunInput = inputUser.nextLine();
@@ -91,6 +97,121 @@ public class Utility {
             data = bufferInput.readLine(); // Akan memulai pembacaan di baris selanjutnya
         }
         return entry;
+    }
+
+    public static int cekNomorDiDatabase(String[] kataKunci) throws IOException{
+        FileReader fileInput = new FileReader("inventory.txt");
+        BufferedReader bufferInput = new BufferedReader(fileInput);
+
+        String data = bufferInput.readLine();
+        boolean isExist = false;
+        int count = 0;
+        int nomorData = 0;
+        while (data != null) {
+            count++;
+            isExist = true;
+            for (String keyword : kataKunci) {
+                isExist = isExist && data.toLowerCase().contains(keyword.toLowerCase());
+            }
+            if (isExist) {
+                nomorData = count;
+            }
+            data = bufferInput.readLine();
+        }
+        return nomorData;
+    }
+
+    public static void tambahStok(String[] kataKunci,int stok) throws IOException {
+        // Kita ambil file database original (inventory.txt)
+        File database = new File("inventory.txt");
+        FileReader fileInput = new FileReader(database);
+        BufferedReader bufferInput = new BufferedReader(fileInput);
+
+        // Kita buat file database sementara (temporary.txt)
+        File temporary = new File("temporary.txt");
+        FileWriter fileOutput = new FileWriter(temporary);
+        BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
+
+        String data = bufferInput.readLine();
+        int stokNum = cekNomorDiDatabase(kataKunci);
+        int nomorData = 0;
+        int stokAwal = 0;
+
+        while (data != null) {
+            nomorData++;
+            StringTokenizer masukan = new StringTokenizer(data, ",");
+
+            if (stokNum == nomorData) {
+                String[] fieldData = {"Supplier","Stok","Tahun","Jenis","Merk","Seri"};
+                String[] tempData = new String[6];
+
+                masukan = new StringTokenizer(data, ",");
+                String originalData = masukan.nextToken();
+                for (int i = 0;i < fieldData.length;i++) {
+                    originalData = masukan.nextToken();
+                    if (i == 1) {
+                        stokAwal = Integer.parseInt(originalData);
+                        tempData[i] = String.valueOf(stokAwal + stok);
+                    } else {
+                        tempData[i] = originalData;
+                    }
+                }
+
+                // Tampilkan data baru ke layar
+                masukan = new StringTokenizer(data, ",");
+                System.out.println("\n---- Data yang akan anda masukkan : ----");
+                System.out.println("----------------------------------------");
+                System.out.println("Primary key       : " + masukan.nextToken());
+                System.out.println("Supplier          : " + masukan.nextToken());
+                masukan.nextToken(); // Kita skip bagian stok nya
+                System.out.println("Tahun Barang      : " + masukan.nextToken());
+                System.out.println("Jenis Barang      : " + masukan.nextToken());
+                System.out.println("Merk Barang       : " + masukan.nextToken());
+                System.out.println("Seri Barang       : " + masukan.nextToken());
+                System.out.println("Stok awal         : " + stokAwal);
+                System.out.println("Pertambahan stok  : " + stok);
+                System.out.println("Total stok        : " + tempData[1]);
+
+                boolean isTambah = GET_YES_OR_NO("Apakah anda ingin menambahkan data tersebut?");
+                if (isTambah) {
+                    // Format data baru ke dalam database
+                    String supplier = tempData[0];
+                    String stokBaru = tempData[1];
+                    String tahun = tempData[2];
+                    String jenis = tempData[3];
+                    String merk = tempData[4];
+                    String seri = tempData[5];
+
+                    // Kita bikin primary keys nya
+                    long nomorEntry = ambilEntry(merk, tahun);
+                    String merkTanpaSpasi = merk.replaceAll("\\s+", "");
+                    String primaryKey = merkTanpaSpasi + "_" + tahun + "_" + nomorEntry;
+
+                    // Tulis data kedalam database sementara (temporary.txt)
+                    bufferOutput.write(primaryKey + "," + supplier + "," + stokBaru + "," + tahun + "," + jenis + "," + merk + "," + seri);
+
+                    System.out.println("Data barang berhasil ditambahkan!");
+                    JOptionPane.showMessageDialog(null,"Data barang berhasil ditambahkan!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    // Copy data
+                    bufferOutput.write(data);
+                }
+            } else {
+                // Copy data
+                bufferOutput.write(data);
+            }
+            bufferOutput.newLine();
+            data = bufferInput.readLine();
+        }
+
+        // Menulis data kedalam file temporary database (temporary.txt)
+        bufferOutput.flush();
+
+        // Kita delete original database (inventory.txt)
+        database.delete();
+
+        // Rename file temporary.txt menjadi inventory.txt
+        temporary.renameTo(database);
     }
 
     public static boolean GET_YES_OR_NO(String message){

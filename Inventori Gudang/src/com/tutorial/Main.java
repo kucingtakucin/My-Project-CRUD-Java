@@ -17,48 +17,85 @@ public class Main {
         while (lanjutkan) {
             Utility.clearScreen();
             System.out.println("====== DATABASE INVENTARIS GUDANG UNIVERSITAS SEBELAS MARET =======\n");
-            System.out.println("1.\tList seluruh barang");
-            System.out.println("2.\tCari data barang");
-            System.out.println("3.\tTambah data barang");
-            System.out.println("4.\tUpdate data barang");
-            System.out.println("5.\tHapus data barang");
+            System.out.println("1.\tList Seluruh Barang");
+            System.out.println("2.\tSearch Barang");
+            System.out.println("3.\tBarang Masuk");
+            System.out.println("4.\tBarang Keluar");
+            System.out.println("5.\tData Supplier");
+            System.out.println("6.\tData Peminjaman");
+            System.out.println("7.\tData Transaksi");
+            System.out.println("8.\tUpdate Barang");
+            System.out.println("9.\tDelete Barang");
 
             System.out.print("\nPilihan kamu : ");
             pilihanUser = inputUser.nextLine();
 
             switch (pilihanUser) {
-                case "1":
-                    System.out.println("\n==============================");
-                    System.out.println("====== LIST DATA BARANG ======");
-                    System.out.println("==============================");
-                    Operasi.listData();
+                case "1" :
+                    System.out.print("\n");
+                    System.out.println("                                ==============================");
+                    System.out.println("                                ====== LIST DATA BARANG ======");
+                    System.out.println("                                ==============================\n");
+                    Operasi.listBarang();
                     break;
-                case "2":
-                    System.out.println("\n=========================");
-                    System.out.println("====== CARI BARANG ======");
-                    System.out.println("=========================");
-                    Operasi.cariData();
+                case "2" :
+                    System.out.print("\n");
+                    System.out.println("                                ===========================");
+                    System.out.println("                                ====== SEARCH BARANG ======");
+                    System.out.println("                                ===========================\n");
+                    Operasi.searchData();
                     break;
-                case "3":
-                    System.out.println("\n================================");
-                    System.out.println("====== TAMBAH DATA BARANG ======");
-                    System.out.println("================================");
-                    Operasi.tambahData();
-                    Operasi.listData();
+                case "3" :
+                    System.out.print("\n");
+                    System.out.println("                                ==========================");
+                    System.out.println("                                ====== BARANG MASUK ======");
+                    System.out.println("                                ==========================\n");
+                    Operasi.barangMasuk();
                     break;
-                case "4":
-                    System.out.println("\n==============================");
-                    System.out.println("====== UPDATE DATA BARANG ======");
-                    System.out.println("==============================");
-                    Operasi.updateData();
+                case "4" :
+                    System.out.print("\n");
+                    System.out.println("                                ===========================");
+                    System.out.println("                                ====== BARANG KELUAR ======");
+                    System.out.println("                                ===========================\n");
+                    Operasi.barangKeluar();
+                    Operasi.listBarang();
                     break;
-                case "5":
-                    System.out.println("\n===============================");
-                    System.out.println("====== HAPUS DATA BARANG ======");
-                    System.out.println("===============================");
-                    Operasi.hapusData();
+                case "5" :
+                    System.out.print("\n");
+                    System.out.println("                                ===========================");
+                    System.out.println("                                ====== DATA SUPPLIER ======");
+                    System.out.println("                                ===========================\n");
+                    Operasi.dataSupplier();
                     break;
-                default:
+                case "6" :
+                    System.out.print("\n");
+                    System.out.println("                                =============================");
+                    System.out.println("                                ====== DATA PEMINJAMAN ======");
+                    System.out.println("                                =============================\n");
+                    Operasi.dataPeminjaman();
+                    break;
+                case "7" :
+                    System.out.print("\n");
+                    System.out.println("                                ============================");
+                    System.out.println("                                ====== DATA TRANSAKSI ======");
+                    System.out.println("                                ============================\n");
+                    Operasi.dataTransaksi();
+                    break;
+                case "8" :
+                    System.out.print("\n");
+                    System.out.println("                                ===========================");
+                    System.out.println("                                ====== UPDATE BARANG ======");
+                    System.out.println("                                ===========================\n");
+                    Operasi.updateBarang();
+                    break;
+                case "9" :
+                    System.out.print("\n");
+                    System.out.println("                                ===========================");
+                    System.out.println("                                ====== DELETE BARANG ======");
+                    System.out.println("                                ===========================\n");
+                    Operasi.deleteBarang();
+                    break;
+                default :
                     System.err.println("\nInput anda tidak ditemukan\nSilahkan pilih 1 s.d 5");
                     JOptionPane.showMessageDialog(null,"Input anda tidak ditemukan\nSilahkan pilih 1 s.d 5","Wah error nih",JOptionPane.ERROR_MESSAGE);
             }
