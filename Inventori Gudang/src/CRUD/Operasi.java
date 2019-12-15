@@ -167,6 +167,10 @@ public class Operasi {
 
         // Kita ambil input dari user
         Scanner inputUser = new Scanner(System.in);
+        System.out.print("Masukkan nama peminjam : ");
+        String peminjam = inputUser.nextLine();
+        Utility.tambahPeminjam(peminjam);
+
         System.out.print("Masukkan nomor barang yang akan dipinjamkan : ");
         int nomorPinjam = inputUser.nextInt();
         System.out.print("Jumlah yang akan dipinjamkan : ");
@@ -268,32 +272,72 @@ public class Operasi {
         BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
 
         ArrayList<String> supplierList = new ArrayList<>();
-        int i = 0;
+        int indeks = 0;
         String data = bufferInput.readLine();
         Scanner dataScanner;
         while (data != null) {
             dataScanner = new Scanner(data);
             dataScanner.useDelimiter(",");
             dataScanner.next();
-            supplierList.add(i,dataScanner.next());
-            i++;
+            supplierList.add(indeks,dataScanner.next());
+            indeks++;
             data = bufferInput.readLine();
         }
         Collections.sort(supplierList);
-        for (i = 0;i < supplierList.size();i++) {
+        for (int i = 0;i < supplierList.size();i++) {
             for (int j = 0; j < supplierList.size() - 1; j++) {
                 if (supplierList.get(j).equals(supplierList.get(j + 1))) {
                     supplierList.remove(j);
                 }
             }
         }
-        bufferOutput.write(String.valueOf(supplierList));
-        bufferOutput.newLine();
+        indeks = 0;
+        supplierList.trimToSize();
+        while (indeks < supplierList.size()) {
+            bufferOutput.write(String.valueOf(supplierList.get(indeks)));
+            bufferOutput.newLine();
+            indeks++;
+        }
         bufferOutput.flush();
         bufferOutput.close();
+        bufferInput.close();
+
+        // Kita ambil file dataSupplier nya (dataSupplier.txt)
+        File file = new File("supplyInventory.txt");
+        FileReader fileInput2 = new FileReader(file);
+        BufferedReader bufferInput2 = new BufferedReader(fileInput2);
+
+        String data2 = bufferInput2.readLine();
+        Scanner dataScanner2;
+        int nomorData = 0;
+        while (data2 != null) {
+            nomorData++;
+            dataScanner2 = new Scanner(data2);
+            String nomor = String.format("%d.",nomorData);
+            String supplier = String.format(" %-30s",dataScanner2.nextLine());
+            System.out.println(nomor + supplier);
+            data2 = bufferInput2.readLine();
+        }
     }
 
-    public static void dataPeminjaman() throws IOException{}
+    public static void dataPeminjaman() throws IOException{
+        // Kita ambil file data peminjam (pinjamInventory.txt)
+        File dataPeminjam = new File("pinjamInventory.txt");
+        FileReader fileInput = new FileReader(dataPeminjam);
+        BufferedReader bufferInput = new BufferedReader(fileInput);
+
+        String data = bufferInput.readLine();
+        Scanner dataScanner;
+        int nomorData = 0;
+        while (data != null) {
+            nomorData++;
+            dataScanner = new Scanner(data);
+            String nomor = String.format("%d.",nomorData);
+            String peminjam = String.format(" %-30s",dataScanner.nextLine());
+            System.out.println(nomor + peminjam);
+            data = bufferInput.readLine();
+        }
+    }
 
     public static void dataTransaksi() throws IOException{
     }

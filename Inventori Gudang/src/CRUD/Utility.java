@@ -214,6 +214,34 @@ public class Utility {
         temporary.renameTo(database);
     }
 
+    static ArrayList<String> peminjamList = new ArrayList<>();
+    public static void tambahPeminjam(String peminjam) throws IOException{
+        peminjamList.add(peminjam);
+
+//      Kita buat file untuk data peminjam (pinjamInventory.txt)
+        File dataPeminjam = new File("pinjamInventory.txt");
+        FileWriter fileOutput = new FileWriter(dataPeminjam,true);
+        BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
+
+        for (int i = 0;i < peminjamList.size();i++) {
+            for (int j = 0; j < peminjamList.size() - 1; j++) {
+                if (peminjamList.get(j).equals(peminjamList.get(j + 1))) {
+                    peminjamList.remove(j);
+                }
+            }
+        }
+
+        peminjamList.trimToSize();
+        int indeks = 0;
+        while (indeks < peminjamList.size()) {
+            bufferOutput.write(String.valueOf(peminjamList.get(indeks)));
+            bufferOutput.newLine();
+            indeks++;
+        }
+        bufferOutput.flush();
+        bufferOutput.close();
+    }
+
     public static boolean GET_YES_OR_NO(String message){
         Scanner inputUser = new Scanner(System.in);
         System.out.print("\n" + message + " (Y/N) ");
