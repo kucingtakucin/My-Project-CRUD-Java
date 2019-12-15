@@ -1,7 +1,8 @@
-AppleMacbook_2017_1,it-store.id,4,2017,Elektronik,Apple,Apple MacBook Pro i5
-AsusRog_2018_1,it-store.id,3,2018,Elektronik,Asus,Asus ROG STRIX HERO GL503GE i7
-AcerPedator_2019_1,it-store.id,5,2019,Elektronik,Acer,Acer Predator Triton 300 i7
+Apple_2017_1,it-store.id,4,2017,Elektronik,Apple,Apple MacBook Pro i5
+Asus_2018_1,it-store.id,3,2018,Elektronik,Asus,Asus ROG STRIX HERO GL503GE i7
+Acer_2019_1,it-store.id,5,2019,Elektronik,Acer,Acer Predator Triton 300 i7
 Lenovo_2019_1,it-store.id,3,2019,Elektronik,Lenovo,Lenovo Legion Y740 i7
 Samsung_2019_1,it-store.id,4,2019,Elektronik,Samsung,Samsung Galaxy J9 Premium
 Lenovo_2019_4,it-store.id,6,2019,Elektronik,Lenovo,Lenovo Ideapad330
-Dell_2016_1,Labkom,3,2016,Elektronik,Dell,Dell Inspiron 14
+Dell_2016_1,Labkom,5,2016,Elektronik,Dell,Dell Inspiron 14
+Xiaomi_2018_1,Labkom,5,2018,Elektronik,Xiaomi,Xiaomi Redmi 4A

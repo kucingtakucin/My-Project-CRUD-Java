@@ -76,30 +76,35 @@ public class Operasi {
 
         // Mengambil input dari user untuk menambah data
         Scanner inputUser = new Scanner(System.in);
-        String supplier, jenis, merk, seri, tahun;
+        String jawab,supplier, jenis, merk, seri, tahun;
         int stok;
 
-        System.out.print("Masukkan supplier : ");
-        supplier = inputUser.nextLine();
-        System.out.print("Masukkan jenis barang : ");
-        jenis = inputUser.nextLine();
-        System.out.print("Masukan merk barang : ");
-        merk = inputUser.nextLine();
-        System.out.print("Masukan seri barang : ");
-        seri = inputUser.nextLine();
-        System.out.print("Masukan tahun barang (YYYY) : ");
-        tahun = Utility.ambilTahun();
-        System.out.print("Masukkan banyak nya barang : ");
-        stok = inputUser.nextInt(); inputUser.nextLine();
-
-        // Cek barang di database (inventory.txt)
-        String[] keywords = {tahun + "," + jenis + "," + merk + "," + seri}; // Kita ubah menjadi array
-        System.out.println(Arrays.toString(keywords));
-
-        boolean isExist = Utility.cekBarangDiDatabase(keywords,false);
+        System.out.println("A. Tambah barang baru");
+        System.out.println("B. Tambah stok barang");
+        System.out.print("--> ");
+        jawab = inputUser.nextLine();
+        while (!jawab.equalsIgnoreCase("A") && !jawab.equalsIgnoreCase("B")) {
+            System.out.println("Maaf anda salah input! Silahkan coba lagi!");
+            JOptionPane.showMessageDialog(null,"Maaf anda salah input! Silahkan coba lagi!","Error",JOptionPane.ERROR_MESSAGE);
+            System.out.print("--> ");
+            jawab = inputUser.nextLine();
+        }
 
         // Menulis barang di database (inventory.txt)
-        if (!isExist){
+        if (jawab.equalsIgnoreCase("A")){
+            System.out.print("Masukkan supplier : ");
+            supplier = inputUser.nextLine();
+            System.out.print("Masukkan jenis barang : ");
+            jenis = inputUser.nextLine();
+            System.out.print("Masukan merk barang : ");
+            merk = inputUser.nextLine();
+            System.out.print("Masukan seri barang : ");
+            seri = inputUser.nextLine();
+            System.out.print("Masukan tahun barang (YYYY) : ");
+            tahun = Utility.ambilTahun();
+            System.out.print("Masukkan banyak nya barang : ");
+            stok = inputUser.nextInt(); inputUser.nextLine();
+
             long nomorEntry = Utility.ambilEntry(merk, tahun) + 1; // Menciptakan nomorEntry
 
             String merkTanpaSpasi = merk.replaceAll("\\s+",""); // Kita hapus semua spasi
@@ -123,7 +128,21 @@ public class Operasi {
                 JOptionPane.showMessageDialog(null,"Data barang berhasil ditambahkan!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
                 listBarang();
             }
-        } else {
+        } else if (jawab.equalsIgnoreCase("B")){
+            System.out.print("Masukkan supplier : ");
+            supplier = inputUser.nextLine();
+            System.out.print("Masukkan jenis barang : ");
+            jenis = inputUser.nextLine();
+            System.out.print("Masukan merk barang : ");
+            merk = inputUser.nextLine();
+            System.out.print("Masukan seri barang : ");
+            seri = inputUser.nextLine();
+            System.out.print("Masukan tahun barang (YYYY) : ");
+            tahun = Utility.ambilTahun();
+            System.out.print("Masukkan banyak nya barang : ");
+            stok = inputUser.nextInt(); inputUser.nextLine();
+
+            String[] keywords = {tahun + "," + jenis + "," + merk + "," + seri};
             Utility.tambahStok(keywords,stok);
         }
 
@@ -237,7 +256,42 @@ public class Operasi {
         temporary.renameTo(database);
     }
 
-    public static void dataSupplier() throws IOException{}
+    public static void dataSupplier() throws IOException{
+        // Kita ambil file database original (inventory.txt)
+        File database = new File("inventory.txt");
+        FileReader fileInput = new FileReader(database);
+        BufferedReader bufferInput = new BufferedReader(fileInput);
+
+        // Kita buat file baru untuk data supplier (supplyInventory.txt)
+        File dataSupplier = new File ("supplyInventory.txt");
+        FileWriter fileOutput = new FileWriter(dataSupplier);
+        BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
+
+        ArrayList<String> supplierList = new ArrayList<>();
+        int i = 0;
+        String data = bufferInput.readLine();
+        Scanner dataScanner;
+        while (data != null) {
+            dataScanner = new Scanner(data);
+            dataScanner.useDelimiter(",");
+            dataScanner.next();
+            supplierList.add(i,dataScanner.next());
+            i++;
+            data = bufferInput.readLine();
+        }
+        Collections.sort(supplierList);
+        for (i = 0;i < supplierList.size();i++) {
+            for (int j = 0; j < supplierList.size() - 1; j++) {
+                if (supplierList.get(j).equals(supplierList.get(j + 1))) {
+                    supplierList.remove(j);
+                }
+            }
+        }
+        bufferOutput.write(String.valueOf(supplierList));
+        bufferOutput.newLine();
+        bufferOutput.flush();
+        bufferOutput.close();
+    }
 
     public static void dataPeminjaman() throws IOException{}
 
