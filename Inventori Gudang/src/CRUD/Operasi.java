@@ -133,8 +133,8 @@ public class Operasi {
                 bufferOutput.write(primaryKey + "," + supplier + "," + stok + "," + tahun + "," + jenis + "," + merk + "," + seri);
                 bufferOutput.newLine(); // Menciptakan baris baru (enter)
                 bufferOutput.flush(); // Menuliskan di database (inventory.txt)
-                System.out.println("Data barang berhasil ditambahkan!");
-                JOptionPane.showMessageDialog(null,"Data barang berhasil ditambahkan!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
+                System.out.println("Stok barang berhasil ditambahkan!");
+                JOptionPane.showMessageDialog(null,"Stok barang berhasil ditambahkan!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
                 listBarang();
             }
         } else if (jawab.equalsIgnoreCase("B")){

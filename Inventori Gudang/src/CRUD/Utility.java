@@ -149,7 +149,7 @@ public class Utility {
                 String originalData = masukan.nextToken();
                 for (int i = 0;i < fieldData.length;i++) {
                     originalData = masukan.nextToken();
-                    if (i == 1) {
+                    if (i == 1) { // Yang diubah bagian stoknya saja
                         stokAwal = Integer.parseInt(originalData);
                         tempData[i] = String.valueOf(stokAwal + stok);
                     } else {
@@ -189,9 +189,6 @@ public class Utility {
 
                     // Tulis data kedalam database sementara (temporary.txt)
                     bufferOutput.write(primaryKey + "," + supplier + "," + stokBaru + "," + tahun + "," + jenis + "," + merk + "," + seri);
-
-                    System.out.println("Stok barang berhasil ditambah!");
-                    JOptionPane.showMessageDialog(null,"Stok barang berhasil ditambah!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     // Copy data
                     bufferOutput.write(data);
