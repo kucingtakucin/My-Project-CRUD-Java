@@ -4,5 +4,5 @@ Acer_2019_1,it-store.id,5,2019,Elektronik,Acer,Acer Predator Triton 300 i7
 Lenovo_2019_1,it-store.id,3,2019,Elektronik,Lenovo,Lenovo Legion Y740 i7
 Samsung_2019_1,it-store.id,4,2019,Elektronik,Samsung,Samsung Galaxy J9 Premium
 Lenovo_2019_4,it-store.id,3,2019,Elektronik,Lenovo,Lenovo Ideapad330
-Dell_2017_1,Labkom,16,2017,Elektronik,Dell,Dell Inspiron 14
+Dell_2017_1,Labkom,18,2017,Elektronik,Dell,Dell Inspiron 14
 Toyota_2019_1,Labkom,16,2019,Transportasi,Toyota,Toyota Avanza
