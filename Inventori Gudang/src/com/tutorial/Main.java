@@ -22,10 +22,9 @@ public class Main {
             System.out.println("3.\tBarang Masuk");
             System.out.println("4.\tBarang Keluar");
             System.out.println("5.\tData Supplier");
-            System.out.println("6.\tData Peminjaman");
-            System.out.println("7.\tData Transaksi");
-            System.out.println("8.\tUpdate Barang");
-            System.out.println("9.\tDelete Barang");
+            System.out.println("6.\tData Peminjam");
+            System.out.println("7.\tUpdate Barang");
+            System.out.println("8.\tDelete Barang");
 
             System.out.print("\nPilihan kamu : ");
             pilihanUser = inputUser.nextLine();
@@ -58,7 +57,6 @@ public class Main {
                     System.out.println("                                ====== BARANG KELUAR ======");
                     System.out.println("                                ===========================\n");
                     Operasi.barangKeluar();
-                    Operasi.listBarang();
                     break;
                 case "5" :
                     System.out.print("\n");
@@ -76,19 +74,12 @@ public class Main {
                     break;
                 case "7" :
                     System.out.print("\n");
-                    System.out.println("                                ============================");
-                    System.out.println("                                ====== DATA TRANSAKSI ======");
-                    System.out.println("                                ============================\n");
-                    Operasi.dataTransaksi();
-                    break;
-                case "8" :
-                    System.out.print("\n");
                     System.out.println("                                ===========================");
                     System.out.println("                                ====== UPDATE BARANG ======");
                     System.out.println("                                ===========================\n");
                     Operasi.updateBarang();
                     break;
-                case "9" :
+                case "8" :
                     System.out.print("\n");
                     System.out.println("                                ===========================");
                     System.out.println("                                ====== DELETE BARANG ======");

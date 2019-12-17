@@ -190,8 +190,8 @@ public class Utility {
                     // Tulis data kedalam database sementara (temporary.txt)
                     bufferOutput.write(primaryKey + "," + supplier + "," + stokBaru + "," + tahun + "," + jenis + "," + merk + "," + seri);
 
-                    System.out.println("Data barang berhasil ditambahkan!");
-                    JOptionPane.showMessageDialog(null,"Data barang berhasil ditambahkan!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
+                    System.out.println("Stok barang berhasil ditambah!");
+                    JOptionPane.showMessageDialog(null,"Stok barang berhasil ditambah!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     // Copy data
                     bufferOutput.write(data);
@@ -217,10 +217,12 @@ public class Utility {
     static ArrayList<String> peminjamList = new ArrayList<>();
     public static void tambahPeminjam(String peminjam) throws IOException{
         peminjamList.add(peminjam);
+        Collections.sort(peminjamList);
+        System.out.println(peminjamList);
 
 //      Kita buat file untuk data peminjam (pinjamInventory.txt)
         File dataPeminjam = new File("pinjamInventory.txt");
-        FileWriter fileOutput = new FileWriter(dataPeminjam,true);
+        FileWriter fileOutput = new FileWriter(dataPeminjam);
         BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
 
         for (int i = 0;i < peminjamList.size();i++) {
@@ -231,8 +233,9 @@ public class Utility {
             }
         }
 
-        peminjamList.trimToSize();
         int indeks = 0;
+        Collections.sort(peminjamList);
+        peminjamList.trimToSize();
         while (indeks < peminjamList.size()) {
             bufferOutput.write(String.valueOf(peminjamList.get(indeks)));
             bufferOutput.newLine();

@@ -76,7 +76,7 @@ public class Operasi {
 
         // Mengambil input dari user untuk menambah data
         Scanner inputUser = new Scanner(System.in);
-        String jawab,supplier, jenis, merk, seri, tahun;
+        String jawab, supplier, pilihJenis, jenis = null, merk, seri, tahun;
         int stok;
 
         System.out.println("A. Tambah barang baru");
@@ -94,8 +94,17 @@ public class Operasi {
         if (jawab.equalsIgnoreCase("A")){
             System.out.print("Masukkan supplier : ");
             supplier = inputUser.nextLine();
+            System.out.println("Jenis Barang : ");
+            System.out.println("1. Elektronik");
+            System.out.println("2. Transportasi");
             System.out.print("Masukkan jenis barang : ");
-            jenis = inputUser.nextLine();
+            pilihJenis = inputUser.nextLine();
+            if (pilihJenis.equals("1")) {
+                jenis = "Elektronik";
+            } else if (pilihJenis.equals("2")) {
+                jenis = "Transportasi";
+            }
+
             System.out.print("Masukan merk barang : ");
             merk = inputUser.nextLine();
             System.out.print("Masukan seri barang : ");
@@ -129,21 +138,37 @@ public class Operasi {
                 listBarang();
             }
         } else if (jawab.equalsIgnoreCase("B")){
-            System.out.print("Masukkan supplier : ");
-            supplier = inputUser.nextLine();
-            System.out.print("Masukkan jenis barang : ");
-            jenis = inputUser.nextLine();
-            System.out.print("Masukan merk barang : ");
-            merk = inputUser.nextLine();
-            System.out.print("Masukan seri barang : ");
-            seri = inputUser.nextLine();
-            System.out.print("Masukan tahun barang (YYYY) : ");
-            tahun = Utility.ambilTahun();
-            System.out.print("Masukkan banyak nya barang : ");
-            stok = inputUser.nextInt(); inputUser.nextLine();
+            File database = new File("inventory.txt");
+            FileReader fileInput = new FileReader(database);
+            BufferedReader bufferInput = new BufferedReader(fileInput);
 
-            String[] keywords = {tahun + "," + jenis + "," + merk + "," + seri};
-            Utility.tambahStok(keywords,stok);
+            // Tampilkan data terlebih dahulu
+            listBarang();
+            System.out.print("Masukkan nomor barang yang akan ditambah stoknya : ");
+            int nomor = inputUser.nextInt();
+            System.out.print("Berapa jumlah yang akan ditambahkan : ");
+            int stok2 = inputUser.nextInt();
+
+            String data = bufferInput.readLine();
+            String tahun2 = null,jenis2 = null,merk2 = null,seri2 = null;
+            int nomorData = 0;
+            while (data != null) {
+                nomorData++;
+                if (nomorData == nomor) {
+                    StringTokenizer masukan = new StringTokenizer(data, ",");
+                    masukan.nextToken(); // Primary keys
+                    masukan.nextToken(); // Supplier
+                    masukan.nextToken(); // Stok
+                    tahun2 = masukan.nextToken();
+                    jenis2 = masukan.nextToken();
+                    merk2 = masukan.nextToken();
+                    seri2 = masukan.nextToken();
+                }
+                data = bufferInput.readLine();
+            }
+            String[] keywords = {tahun2 + "," + jenis2 + "," + merk2 + "," + seri2};
+            Utility.tambahStok(keywords,stok2);
+            listBarang();
         }
 
         // Jangan lupa untuk menutup file
@@ -169,12 +194,9 @@ public class Operasi {
         Scanner inputUser = new Scanner(System.in);
         System.out.print("Masukkan nama peminjam : ");
         String peminjam = inputUser.nextLine();
-        Utility.tambahPeminjam(peminjam);
 
         System.out.print("Masukkan nomor barang yang akan dipinjamkan : ");
         int nomorPinjam = inputUser.nextInt();
-        System.out.print("Jumlah yang akan dipinjamkan : ");
-        int jumlahPinjam = inputUser.nextInt();
 
         // Tampilkan data yang ingin diupdate
         String data = bufferInput.readLine();
@@ -187,6 +209,9 @@ public class Operasi {
 
             // Tampilkan data entrycounts = nomorPinjam
             if (nomorPinjam == entryCounts) {
+                System.out.print("Jumlah yang akan dipinjamkan : ");
+                int jumlahPinjam = inputUser.nextInt();
+
                 String[] fieldData = {"supplier", "stok", "tahun", "jenis", "merk", "seri"};
                 String[] tempData = new String[6];
 
@@ -194,17 +219,19 @@ public class Operasi {
                 String originalData = masukan.nextToken();
                 for (int i = 0;i < fieldData.length;i++) {
                     originalData = masukan.nextToken();
-                    if (i == 1) {
+                    if (i == 1) { // stok
                         stokAwal = Integer.parseInt(originalData);
                         tempData[i] = String.valueOf(stokAwal - jumlahPinjam);
                     } else {
                         tempData[i] = originalData;
                     }
                 }
+
                 if (stokAwal - jumlahPinjam <= 0) {
                     JOptionPane.showMessageDialog(null,"Stok tidak mencukupi! \nProses peminjaman dibatalkan!","Error",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                Utility.tambahPeminjam(peminjam);
 
                 // Tampilkan data ke layar
                 masukan = new StringTokenizer(data, ",");
@@ -238,6 +265,8 @@ public class Operasi {
 
                     // Tulis data kedalam database sementara (temporary.txt)
                     bufferOutput.write(primaryKey + "," + supplier + "," + stokBaru + "," + tahun + "," + jenis + "," + merk + "," + seri);
+                    JOptionPane.showMessageDialog(null,"Barang berhasil dipinjamkan!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
+                    listBarang();
                 } else {
                     // Copy data
                     bufferOutput.write(data);
@@ -246,8 +275,13 @@ public class Operasi {
                 // Copy data
                 bufferOutput.write(data);
             }
+
             bufferOutput.newLine();
             data = bufferInput.readLine();
+        }
+        if (nomorPinjam > entryCounts) {
+            JOptionPane.showMessageDialog(null,"Barang tidak ditemukan! \nProses peminjaman dibatalkan!","Error",JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
         // Menulis data kedalam file temporary database (temporary.txt)
@@ -339,9 +373,6 @@ public class Operasi {
         }
     }
 
-    public static void dataTransaksi() throws IOException{
-    }
-
     public static void updateBarang() throws IOException{
         // Kita ambil file database original (inventory.txt)
         File database = new File("inventory.txt"); // Mengecek file kita ada atau tidak
@@ -388,17 +419,17 @@ public class Operasi {
 
                 masukan = new StringTokenizer(data,","); // Kita refresh data
                 String originalData = masukan.nextToken();
-                for(int i=0; i < fieldData.length ; i++) {
+                for (int i = 0; i < fieldData.length; i++) {
                     originalData = masukan.nextToken();
-                    if (i == 1){ // Kita lewati bagian stok nya
+                    if (i == 1) { // Kita lewati bagian stok nya
                         tempData[i] = originalData;
                         continue;
                     }
 
                     boolean isUpdate = Utility.GET_YES_OR_NO("Apakah anda ingin mengubah " + fieldData[i] + "?");
-                    if (isUpdate){
+                    if (isUpdate) {
                         // Mengambil input dari user
-                        if (fieldData[i].equalsIgnoreCase("tahun")){
+                        if (fieldData[i].equalsIgnoreCase("tahun")) {
                             System.out.print("Masukkan tahun barang, format = (YYYY) : ");
                             tempData[i] = Utility.ambilTahun();
                         } else {
