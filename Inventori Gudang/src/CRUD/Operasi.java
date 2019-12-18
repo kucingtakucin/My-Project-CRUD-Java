@@ -79,6 +79,7 @@ public class Operasi {
         String jawab, supplier, pilihJenis, jenis = null, merk, seri, tahun;
         int stok;
 
+        /* Untuk barang masuk, ada 2 pilihan */
         System.out.println("A. Tambah barang baru");
         System.out.println("B. Tambah stok barang");
         System.out.print("--> ");
@@ -91,7 +92,7 @@ public class Operasi {
         }
 
         // Menulis barang di database (inventory.txt)
-        if (jawab.equalsIgnoreCase("A")){
+        if (jawab.equalsIgnoreCase("A")){ // Jika kita memilih A
             System.out.print("Masukkan supplier : ");
             supplier = inputUser.nextLine();
             System.out.println("Jenis Barang : ");
@@ -103,6 +104,10 @@ public class Operasi {
                 jenis = "Elektronik";
             } else if (pilihJenis.equals("2")) {
                 jenis = "Transportasi";
+            } else {
+                System.out.println("Salah input! Tambah barang dibatalkan!");
+                JOptionPane.showMessageDialog(null,"Salah input! Tambah barang dibatalkan!","Error",JOptionPane.ERROR_MESSAGE);
+                return; // Keluar dari method
             }
 
             System.out.print("Masukan merk barang : ");
@@ -138,6 +143,7 @@ public class Operasi {
                 listBarang();
             }
         } else if (jawab.equalsIgnoreCase("B")){
+            // Kita ambil file database nya (inventory.txt)
             File database = new File("inventory.txt");
             FileReader fileInput = new FileReader(database);
             BufferedReader bufferInput = new BufferedReader(fileInput);
@@ -147,26 +153,26 @@ public class Operasi {
             System.out.print("Masukkan nomor barang yang akan ditambah stoknya : ");
             int nomor = inputUser.nextInt();
 
-            String data = bufferInput.readLine();
+            String data = bufferInput.readLine(); // Akan mulai membaca file per baris
             String tahun2 = null,jenis2 = null,merk2 = null,seri2 = null;
             int nomorData = 0;
             while (data != null) {
                 nomorData++;
                 if (nomorData == nomor) {
-                    StringTokenizer masukan = new StringTokenizer(data, ",");
-                    masukan.nextToken(); // Primary keys
-                    masukan.nextToken(); // Supplier
-                    masukan.nextToken(); // Stok
-                    tahun2 = masukan.nextToken();
-                    jenis2 = masukan.nextToken();
-                    merk2 = masukan.nextToken();
-                    seri2 = masukan.nextToken();
+                    StringTokenizer masukan = new StringTokenizer(data, ","); // Mulai membaca baris per kata
+                    masukan.nextToken(); // Kita lewati bagian Primary keys nya
+                    masukan.nextToken(); // Kita lewati bagian Supplier nya
+                    masukan.nextToken(); // Kita lewati bagian Stok nya
+                    tahun2 = masukan.nextToken(); // bagian tahun
+                    jenis2 = masukan.nextToken(); // bagian jenis barang
+                    merk2 = masukan.nextToken(); // bagian merk barang
+                    seri2 = masukan.nextToken(); // bagian seri barang
                 }
-                data = bufferInput.readLine();
+                data = bufferInput.readLine(); // Akan mulai membaca file di baris selanjutnya
             }
-            if (nomor > nomorData) {
+            if (nomor > nomorData) { // Jika nomor yang kita inputkan tidak sesuai dengan data
                 JOptionPane.showMessageDialog(null,"Barang tidak ditemukan!","Error",JOptionPane.ERROR_MESSAGE);
-                return;
+                return; // Keluar dari method
             }
             System.out.print("Berapa jumlah yang akan ditambahkan : ");
             int stok2 = inputUser.nextInt();
@@ -205,40 +211,40 @@ public class Operasi {
         System.out.print("Masukkan nomor barang yang akan dipinjamkan : ");
         int nomorPinjam = inputUser.nextInt();
 
-        // Tampilkan data yang ingin diupdate
-        String data = bufferInput.readLine();
+        // Mulai proses program
+        String data = bufferInput.readLine(); // Akan mulai membaca file di baris pertama
         int entryCounts = 0;
         int stokAwal = 0;
 
         while (data != null) {
             entryCounts++;
-            StringTokenizer masukan = new StringTokenizer(data, ",");
+            StringTokenizer masukan = new StringTokenizer(data, ","); // Hanya sebatas deklarasi
 
-            // Tampilkan data entrycounts = nomorPinjam
+            // Jika entrycounts = nomorPinjam
             if (nomorPinjam == entryCounts) {
                 System.out.print("Jumlah yang akan dipinjamkan : ");
                 int jumlahPinjam = inputUser.nextInt();
 
-                String[] fieldData = {"supplier", "stok", "tahun", "jenis", "merk", "seri"};
-                String[] tempData = new String[6];
+                String[] fieldData = {"supplier", "stok", "tahun", "jenis", "merk", "seri"}; // Hanya sebagai parameter untuk jaga-jaga
+                String[] tempData = new String[6]; // Kita ciptakan array kosong dengan length 6
 
-                masukan = new StringTokenizer(data, ",");
-                String originalData = masukan.nextToken();
+                masukan = new StringTokenizer(data, ","); // Mulai membaca file di baris pertama
+                String originalData = masukan.nextToken(); // Skip bagian primary keys
                 for (int i = 0;i < fieldData.length;i++) {
                     originalData = masukan.nextToken();
-                    if (i == 1) { // stok
-                        stokAwal = Integer.parseInt(originalData);
-                        tempData[i] = String.valueOf(stokAwal - jumlahPinjam);
+                    if (i == 1) { // Kita ubah di bagian stok barang nya
+                        stokAwal = Integer.parseInt(originalData); // Mengubah string menjadi integer
+                        tempData[i] = String.valueOf(stokAwal - jumlahPinjam); // Kurangi stok awal dengan jumlah pinjam
                     } else {
-                        tempData[i] = originalData;
+                        tempData[i] = originalData; // Selain bagian stok, data tidak kita ubah
                     }
                 }
 
-                if (stokAwal - jumlahPinjam <= 0) {
+                if (stokAwal - jumlahPinjam <= 0) { // Jika barang yang kita pinjam melebihi stok yang ada
                     JOptionPane.showMessageDialog(null,"Stok tidak mencukupi! \nProses peminjaman dibatalkan!","Error",JOptionPane.ERROR_MESSAGE);
-                    return;
+                    return; // Keluar dari method
                 }
-                Utility.tambahPeminjam(peminjam);
+                Utility.tambahPeminjam(peminjam); // Jika tidak keluar dari method, kita masukkan nama peminjam ke method lain
 
                 // Tampilkan data ke layar
                 masukan = new StringTokenizer(data, ",");
@@ -258,12 +264,12 @@ public class Operasi {
                 boolean isPinjam = Utility.GET_YES_OR_NO("Apakah anda ingin meminjamkan barang tersebut?");
                 if (isPinjam) {
                     // Format data baru ke dalam database
-                    String supplier = tempData[0];
-                    String stokBaru = tempData[1];
-                    String tahun = tempData[2];
-                    String jenis = tempData[3];
-                    String merk = tempData[4];
-                    String seri = tempData[5];
+                    String supplier = tempData[0]; // Bagian supplier
+                    String stokBaru = tempData[1]; // Bagian stok baru
+                    String tahun = tempData[2]; // Bagian tahun barang
+                    String jenis = tempData[3]; // Bagian jenis barang
+                    String merk = tempData[4]; // Bagian merk barang
+                    String seri = tempData[5]; // Bagian seri barang
 
                     // Kita bikin primary keys nya
                     long nomorEntry = Utility.ambilEntry(merk, tahun);
@@ -283,12 +289,12 @@ public class Operasi {
                 bufferOutput.write(data);
             }
 
-            bufferOutput.newLine();
-            data = bufferInput.readLine();
+            bufferOutput.newLine(); // Kita tambahkan file
+            data = bufferInput.readLine(); // Akan memulai file di baris selanjutnya
         }
-        if (nomorPinjam > entryCounts) {
+        if (nomorPinjam > entryCounts) { // Jika nomor barang yang ingin dipinjam tidak sesuai dengan data
             JOptionPane.showMessageDialog(null,"Barang tidak ditemukan! \nProses peminjaman dibatalkan!","Error",JOptionPane.ERROR_MESSAGE);
-            return;
+            return; // Keluar dari method
         }
 
         // Menulis data kedalam file temporary database (temporary.txt)
@@ -312,34 +318,38 @@ public class Operasi {
         FileWriter fileOutput = new FileWriter(dataSupplier);
         BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
 
-        ArrayList<String> supplierList = new ArrayList<>();
+        ArrayList<String> supplierList = new ArrayList<>(); // Kita buat ArrayList untuk menyimpan data supplier sementara
         int indeks = 0;
-        String data = bufferInput.readLine();
-        Scanner dataScanner;
-        while (data != null) {
-            dataScanner = new Scanner(data);
-            dataScanner.useDelimiter(",");
-            dataScanner.next();
-            supplierList.add(indeks,dataScanner.next());
+        String data = bufferInput.readLine(); // Akan memulai membaca file di baris pertama
+        Scanner dataScanner; // Kita gunakan Scanner untuk membaca baris pertama
+        while (data != null) { // Ketika data memiliki isi/tidak kosong, maka kita baca isi dari data tersebut
+            dataScanner = new Scanner(data); // Akan memulai membaca data
+            dataScanner.useDelimiter(","); // Kita gunakan tanda koma sebagai pemisah pembacaan kalimat
+            dataScanner.next();  // Kita lompati bagian primary keys nya
+            supplierList.add(indeks,dataScanner.next()); // Kita masukkan supplier nya kedalam ArrayList
             indeks++;
-            data = bufferInput.readLine();
+            data = bufferInput.readLine(); // Akan memulai membaca file di baris selanjutnya
         }
-        Collections.sort(supplierList);
+        Collections.sort(supplierList); // Kita urut kan
+
+        // Kita gunakan for di dalam for untuk menghapus indeks yang memiliki kesamaan isi dengan indeks yang lainnya
         for (int i = 0;i < supplierList.size();i++) {
             for (int j = 0; j < supplierList.size() - 1; j++) {
                 if (supplierList.get(j).equals(supplierList.get(j + 1))) {
-                    supplierList.remove(j);
+                    supplierList.remove(j); // Hapus indeks
                 }
             }
         }
         indeks = 0;
-        supplierList.trimToSize();
+        supplierList.trimToSize(); // Kita hapus indeks yang kosong
+
+        // Kita tulis data supplier per indeks ke dalam file supplyInventory.txt
         while (indeks < supplierList.size()) {
             bufferOutput.write(String.valueOf(supplierList.get(indeks)));
             bufferOutput.newLine();
             indeks++;
         }
-        bufferOutput.flush();
+        bufferOutput.flush(); // Tulis data
         bufferOutput.close();
         bufferInput.close();
 
@@ -348,16 +358,16 @@ public class Operasi {
         FileReader fileInput2 = new FileReader(file);
         BufferedReader bufferInput2 = new BufferedReader(fileInput2);
 
-        String data2 = bufferInput2.readLine();
-        Scanner dataScanner2;
+        String data2 = bufferInput2.readLine(); // Akan kita baca file nya di baris pertama
+        Scanner dataScanner2; // Kita gunakan Scanner
         int nomorData = 0;
-        while (data2 != null) {
+        while (data2 != null) { // Ketika data memiliki isi dan tidak kosong, maka kita baca isinya
             nomorData++;
-            dataScanner2 = new Scanner(data2);
-            String nomor = String.format("%d.",nomorData);
-            String supplier = String.format(" %-30s",dataScanner2.nextLine());
-            System.out.println(nomor + supplier);
-            data2 = bufferInput2.readLine();
+            dataScanner2 = new Scanner(data2); // Mulai kita baca baris pertama
+            String nomor = String.format("%d.",nomorData); // Kita tambahkan nomor secara manual
+            String supplier = String.format(" %-30s",dataScanner2.nextLine()); // Kita baca keseluruhan baris pertama
+            System.out.println(nomor + supplier); // Kita cetak keseluruhan data di baris pertama
+            data2 = bufferInput2.readLine(); // Akan memulai pembacaan file di baris selanjutnya
         }
     }
 
@@ -367,16 +377,16 @@ public class Operasi {
         FileReader fileInput = new FileReader(dataPeminjam);
         BufferedReader bufferInput = new BufferedReader(fileInput);
 
-        String data = bufferInput.readLine();
-        Scanner dataScanner;
+        String data = bufferInput.readLine(); // Akan kita baca file di baris pertama
+        Scanner dataScanner; // Kita gunakan Scanner
         int nomorData = 0;
-        while (data != null) {
+        while (data != null) { // Ketika data tidak kosong/memiliki isi, maka kita baca isi nya
             nomorData++;
-            dataScanner = new Scanner(data);
-            String nomor = String.format("%d.",nomorData);
-            String peminjam = String.format(" %-30s",dataScanner.nextLine());
-            System.out.println(nomor + peminjam);
-            data = bufferInput.readLine();
+            dataScanner = new Scanner(data); // Mulai kita baca baris pertama
+            String nomor = String.format("%d.",nomorData); // Kita tambahkan nomor secara manual
+            String peminjam = String.format(" %-30s",dataScanner.nextLine()); // Kita baca keseluruhan baris pertama
+            System.out.println(nomor + peminjam); // Kita cetak keseluruhan data di baris pertama
+            data = bufferInput.readLine(); // Akan memulai pembacaan file di baris selanjutnya
         }
     }
 
@@ -404,7 +414,7 @@ public class Operasi {
         String data = bufferedInput.readLine();
         int entryCounts = 0;
 
-        while (data != null){
+        while (data != null){ // Ketika data memiliki isi/tidak kosong, maka kita baca isi nya
             entryCounts++;
             StringTokenizer masukan = new StringTokenizer(data,","); // Memulai pembacaan file per kata
 
@@ -535,7 +545,7 @@ public class Operasi {
         int entryCounts = 0;
         String data = bufferedInput.readLine(); // Akan memulai pembacaan file di baris pertama
 
-        while (data != null){
+        while (data != null){ // Ketika data memiliki isi, maka kita baca data tersebut
             entryCounts++;
             boolean isDelete = false;
 

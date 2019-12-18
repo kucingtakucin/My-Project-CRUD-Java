@@ -8,6 +8,7 @@ import javax.swing.*;
 public class Utility {
 
     protected static boolean cekBarangDiDatabase(String[] kataKunci,boolean isDisplay) throws IOException {
+        // Kita ambil file database inventory.txt
         FileReader fileInput = new FileReader("inventory.txt");
         BufferedReader bufferInput = new BufferedReader(fileInput);
 
@@ -21,7 +22,7 @@ public class Utility {
             System.out.println("------------------------------------------------------------------------------------------------");
         }
 
-        while (data != null) {
+        while (data != null) { // Ketika data memiliki isi, maka kita baca data tersebut
             // Cek keywords didalam baris
             isExist = true;
             for (String keyword : kataKunci) { // Looping for each
@@ -30,7 +31,7 @@ public class Utility {
             // Jika keywordsnya cocok/true maka tampilkan
             if (isExist) {
                 nomorData++;
-                StringTokenizer masukan = new StringTokenizer(data, ",");
+                StringTokenizer masukan = new StringTokenizer(data, ","); // Membaca file per kata di baris pertama
 
                 masukan.nextToken(); // Kita skip bagian Primary Keys nya
                 masukan.nextToken(); // Kita skip bagian Supplier nya
@@ -100,23 +101,24 @@ public class Utility {
     }
 
     public static int cekNomorDiDatabase(String[] kataKunci) throws IOException{
+        // Kita ambil file database inventory.txt
         FileReader fileInput = new FileReader("inventory.txt");
         BufferedReader bufferInput = new BufferedReader(fileInput);
 
-        String data = bufferInput.readLine();
+        String data = bufferInput.readLine(); // Akan memulai pembacaan file di baris pertama
         boolean isExist = false;
         int count = 0;
         int nomorData = 0;
-        while (data != null) {
+        while (data != null) { // Jika data memiliki isi/tidak kosong, maka kita baca isinya
             count++;
             isExist = true;
-            for (String keyword : kataKunci) {
+            for (String keyword : kataKunci) { // Loopinng for each untuk search keyword
                 isExist = isExist && data.toLowerCase().contains(keyword.toLowerCase());
             }
             if (isExist) {
-                nomorData = count;
+                nomorData = count; // Jika ketemu, maka kita ambil nomor data nya saja
             }
-            data = bufferInput.readLine();
+            data = bufferInput.readLine(); // Akan memulai pembacaan file di baris selanjutnya
         }
         return nomorData;
     }
@@ -132,12 +134,12 @@ public class Utility {
         FileWriter fileOutput = new FileWriter(temporary);
         BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
 
-        String data = bufferInput.readLine();
-        int stokNum = cekNomorDiDatabase(kataKunci);
+        String data = bufferInput.readLine(); // Akan memulai pembacaan file di baris pertama
+        int stokNum = cekNomorDiDatabase(kataKunci); // Kita ambil nomor barang yang ingin ditambah stok nya
         int nomorData = 0;
         int stokAwal = 0;
 
-        while (data != null) {
+        while (data != null) { // Ketika data memiliki isi/tidak kosong, maka
             nomorData++;
             StringTokenizer masukan = new StringTokenizer(data, ",");
 
@@ -145,20 +147,20 @@ public class Utility {
                 String[] fieldData = {"Supplier","Stok","Tahun","Jenis","Merk","Seri"};
                 String[] tempData = new String[6];
 
-                masukan = new StringTokenizer(data, ",");
-                String originalData = masukan.nextToken();
+                masukan = new StringTokenizer(data, ","); // Kita baca file di baris pertama
+                String originalData = masukan.nextToken(); // Skip bagian primary keys
                 for (int i = 0;i < fieldData.length;i++) {
                     originalData = masukan.nextToken();
-                    if (i == 1) { // Yang diubah bagian stoknya saja
-                        stokAwal = Integer.parseInt(originalData);
-                        tempData[i] = String.valueOf(stokAwal + stok);
+                    if (i == 1) { // Kita ubah di bagian stok barang nya
+                        stokAwal = Integer.parseInt(originalData); // Mengubah string menjadi integer
+                        tempData[i] = String.valueOf(stokAwal + stok); // Tambah stok
                     } else {
-                        tempData[i] = originalData;
+                        tempData[i] = originalData; // Selain bagian stok, data tidak kita ubah
                     }
                 }
 
                 // Tampilkan data baru ke layar
-                masukan = new StringTokenizer(data, ",");
+                masukan = new StringTokenizer(data, ","); // Refresh data
                 System.out.println("\n---- Data yang akan anda masukkan : ----");
                 System.out.println("----------------------------------------");
                 System.out.println("Primary key       : " + masukan.nextToken());
@@ -213,32 +215,35 @@ public class Utility {
 
     static ArrayList<String> peminjamList = new ArrayList<>();
     public static void tambahPeminjam(String peminjam) throws IOException{
-        peminjamList.add(peminjam);
-        Collections.sort(peminjamList);
-        System.out.println(peminjamList);
+        peminjamList.add(peminjam); // Kita masukkan nama peminjam ke ArrayList
+        Collections.sort(peminjamList); // Kita lakukan sorting untuk jaga-jaga
+//        System.out.println(peminjamList);
 
 //      Kita buat file untuk data peminjam (pinjamInventory.txt)
         File dataPeminjam = new File("pinjamInventory.txt");
         FileWriter fileOutput = new FileWriter(dataPeminjam);
         BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
 
+        // Kita gunakan for di dalam for untuk menghapus indeks yang memiliki kesamaan isi dengan indeks yang lainnya
         for (int i = 0;i < peminjamList.size();i++) {
             for (int j = 0; j < peminjamList.size() - 1; j++) {
                 if (peminjamList.get(j).equals(peminjamList.get(j + 1))) {
-                    peminjamList.remove(j);
+                    peminjamList.remove(j); // Hapus indeks
                 }
             }
         }
 
         int indeks = 0;
-        Collections.sort(peminjamList);
-        peminjamList.trimToSize();
+        Collections.sort(peminjamList); // Kita urutkan
+        peminjamList.trimToSize(); // Kita hapus indeks yang kosong
+
+        // Kita tulis data peminjam per indeks ke dalam file supplyInventory.txt
         while (indeks < peminjamList.size()) {
             bufferOutput.write(String.valueOf(peminjamList.get(indeks)));
             bufferOutput.newLine();
             indeks++;
         }
-        bufferOutput.flush();
+        bufferOutput.flush(); // Tulis data
         bufferOutput.close();
     }
 
