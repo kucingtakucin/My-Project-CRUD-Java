@@ -25,6 +25,7 @@ public class Main {
             System.out.println("6.\tData Peminjam");
             System.out.println("7.\tUpdate Barang");
             System.out.println("8.\tDelete Barang");
+            System.out.println("9.\tSelesai");
 
             System.out.print("\nPilihan kamu : ");
             pilihanUser = inputUser.nextLine();
@@ -86,6 +87,10 @@ public class Main {
                     System.out.println("                                ===========================\n");
                     Operasi.deleteBarang();
                     break;
+                case "9" :
+                    System.out.println("\nProgram Selesai");
+                    JOptionPane.showMessageDialog(null,"Program Selesai","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
+                    System.exit(0);
                 default :
                     System.err.println("\nInput anda tidak ditemukan\nSilahkan pilih 1 s.d 8");
                     JOptionPane.showMessageDialog(null,"Input anda tidak ditemukan\nSilahkan pilih 1 s.d 8","Wah error nih",JOptionPane.ERROR_MESSAGE);

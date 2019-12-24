@@ -279,7 +279,6 @@ public class Operasi {
                     // Tulis data kedalam database sementara (temporary.txt)
                     bufferOutput.write(primaryKey + "," + supplier + "," + stokBaru + "," + tahun + "," + jenis + "," + merk + "," + seri);
                     JOptionPane.showMessageDialog(null,"Barang berhasil dipinjamkan!","Pemberitahuan",JOptionPane.INFORMATION_MESSAGE);
-                    listBarang();
                 } else {
                     // Copy data
                     bufferOutput.write(data);
@@ -305,6 +304,9 @@ public class Operasi {
 
         // Rename file temporary.txt menjadi inventory.txt
         temporary.renameTo(database);
+
+        // Tampilkan data keseluruhan
+        listBarang();
     }
 
     public static void dataSupplier() throws IOException{
