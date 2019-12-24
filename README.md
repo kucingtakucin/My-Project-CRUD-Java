@@ -1,5 +1,5 @@
 # My-Project-CRUD-Java
-Hanyalah sebatas project sederhana teman-teman, mungkin masih ada banyak kekurangan, jadi mohon kritik dan sarannya ya gais :)
+Hanyalah sebatas project java sederhana teman-teman, mungkin masih ada banyak kekurangan, jadi mohon kritik dan sarannya ya gais :)
 
 Panduan buat kalian : 
 1. Untuk saat ini saya baru membuat 3 buah project, yaitu di module Perpustakaan, module Inventory gudang, dan module Tiket
