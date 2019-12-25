@@ -221,7 +221,7 @@ public class Utility {
 
 //      Kita buat file untuk data peminjam (pinjamInventory.txt)
         File dataPeminjam = new File("pinjamInventory.txt");
-        FileWriter fileOutput = new FileWriter(dataPeminjam);
+        FileWriter fileOutput = new FileWriter(dataPeminjam,true);
         BufferedWriter bufferOutput = new BufferedWriter(fileOutput);
 
         // Kita gunakan for di dalam for untuk menghapus indeks yang memiliki kesamaan isi dengan indeks yang lainnya

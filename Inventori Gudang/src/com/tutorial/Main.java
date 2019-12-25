@@ -17,6 +17,7 @@ public class Main {
         while (lanjutkan) {
             Utility.clearScreen();
             System.out.println("====== DATABASE INVENTARIS GUDANG UNIVERSITAS SEBELAS MARET =======\n");
+            System.out.println("-------------------------------------------------------------------");
             System.out.println("1.\tList Seluruh Barang");
             System.out.println("2.\tSearch Barang");
             System.out.println("3.\tBarang Masuk");
@@ -26,6 +27,7 @@ public class Main {
             System.out.println("7.\tUpdate Barang");
             System.out.println("8.\tDelete Barang");
             System.out.println("9.\tSelesai");
+            System.out.println("-------------------------------------------------------------------");
 
             System.out.print("\nPilihan kamu : ");
             pilihanUser = inputUser.nextLine();
