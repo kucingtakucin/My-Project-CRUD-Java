@@ -25,10 +25,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c797b78b-1b2d-483f-9f42-ffe52798518a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/Adam_Arthur_Faizal.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/Mbah_Putih.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copyright/Mbah_Putih_Mulyosugito.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exportToHTML/com/tutorial/Main.java.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventori Gudang/src/CRUD/Operasi.java" beforeDir="false" afterPath="$PROJECT_DIR$/Inventori Gudang/src/CRUD/Operasi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventori Gudang/src/CRUD/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Inventori Gudang/src/CRUD/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventori Gudang/src/com/tutorial/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Inventori Gudang/src/com/tutorial/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perpustakaan/src/CRUD/Operasi.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perpustakaan/src/CRUD/Operasi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perpustakaan/src/CRUD/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perpustakaan/src/CRUD/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Perpustakaan/src/com/tutorial/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Perpustakaan/src/com/tutorial/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tiket/src/CRUD/Operasi.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tiket/src/CRUD/Operasi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tiket/src/CRUD/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tiket/src/CRUD/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tiket/src/com/tutorial/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tiket/src/com/tutorial/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +45,11 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
+  <component name="ExportToHTMLSettings">
+    <option name="printScope" value="1" />
+    <option name="PRINT_LINE_NUMBERS" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="Project CRUD" />
   </component>
@@ -45,6 +57,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -67,13 +80,17 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1UmL66FWSK9CIH9YSfR8KDZJ7f8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="true" />
@@ -342,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577506238153</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Menambahkan copyright pada Module Inventory Gudang">
+      <created>1577520440965</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1577520440965</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -362,6 +386,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Menambah sedikit bumbu GUI" />
     <MESSAGE value="Membuat main menu di Module CRUD Tiket" />
     <MESSAGE value="Memodifikasi main menu" />
@@ -377,7 +402,8 @@
     <MESSAGE value="Update project secara besar-besaran dan perbaikan secara besar-besaran" />
     <MESSAGE value="Sedikit perbaikan" />
     <MESSAGE value="Pembaruan pada Intellij IDEA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pembaruan pada Intellij IDEA" />
+    <MESSAGE value="Menambahkan copyright pada Module Inventory Gudang" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menambahkan copyright pada Module Inventory Gudang" />
   </component>
   <component name="WindowStateProjectService">
     <state x="278" y="59" width="800" height="684" key="#Console" timestamp="1576405653288">
@@ -421,22 +447,24 @@
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1732" y="112" width="624" height="551" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1576197733745" />
-    <state x="256" y="27" width="817" height="741" key="CommitChangelistDialog2" timestamp="1577506237670">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state x="0" y="27" width="1366" height="741" key="CommitChangelistDialog2" timestamp="1577520440505">
+      <screen x="0" y="27" width="2966" height="873" />
     </state>
     <state x="0" y="27" width="817" height="741" key="CommitChangelistDialog2/0.27.1366.741/1366.0.1366.768@0.27.1366.741" timestamp="1577152223890" />
     <state x="1586" y="0" width="817" height="768" key="CommitChangelistDialog2/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1577183884750" />
     <state x="256" y="27" width="824" height="741" key="CommitChangelistDialog2/0.27.1366.741@0.27.1366.741" timestamp="1577506237670" />
+    <state x="0" y="27" width="1366" height="741" key="CommitChangelistDialog2/0.27.2966.873@0.27.2966.873" timestamp="1577520440505" />
     <state x="1466" y="104" width="1166" height="541" key="DiffContextDialog" timestamp="1576545570780">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1466" y="104" width="1092" height="592" key="DiffContextDialog/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1576545570780" />
     <state x="100" y="127" width="1166" height="541" key="DiffContextDialog/0.27.1366.741@0.27.1366.741" timestamp="1576340909721" />
-    <state x="1366" y="196" width="424" height="491" key="FileChooserDialogImpl" timestamp="1577519986491">
-      <screen x="0" y="27" width="2966" height="873" />
+    <state x="629" y="170" width="379" height="417" key="FileChooserDialogImpl" timestamp="1577525155611">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="1822" y="149" width="424" height="491" key="FileChooserDialogImpl/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1576196636410" />
-    <state x="1366" y="196" width="424" height="491" key="FileChooserDialogImpl/0.27.2966.873@0.27.2966.873" timestamp="1577519986491" />
+    <state x="629" y="170" width="379" height="417" key="FileChooserDialogImpl/0.27.1366.741/1366.0.1600.900@0.27.1366.741" timestamp="1577525155611" />
+    <state x="1366" y="196" width="424" height="491" key="FileChooserDialogImpl/0.27.2966.873@0.27.2966.873" timestamp="1577524601076" />
     <state x="2002" y="278" width="535" height="219" key="Github.ShareDialog" timestamp="1575965455312">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
@@ -484,11 +512,12 @@
     </state>
     <state x="278" y="139" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1366.741/1366.0.1366.768@0.27.1366.741" timestamp="1577351105736" />
     <state x="1644" y="116" width="800" height="543" key="Vcs.Push.Dialog.v2/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1577183896583" />
-    <state x="337" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1577506026919">
+    <state x="337" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1577524924261">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="337" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741/1366.0.1366.768@0.27.1366.741" timestamp="1577430087164" />
     <state x="1703" y="205" key="com.intellij.ide.util.TipDialog/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1576750349412" />
+    <state x="337" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741/1366.0.1600.900@0.27.1366.741" timestamp="1577524924261" />
     <state x="337" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1577506026919" />
     <state x="449" y="315" width="467" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576024817526">
       <screen x="0" y="27" width="1366" height="741" />
@@ -507,6 +536,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="381" y="27" width="593" height="741" key="refactoring.ChangeSignatureDialog/0.27.1366.741@0.27.1366.741" timestamp="1576406911619" />
+    <state x="347" y="174" key="run.anything.popup" timestamp="1577524587770">
+      <screen x="0" y="27" width="2966" height="873" />
+    </state>
+    <state x="347" y="174" key="run.anything.popup/0.27.2966.873@0.27.2966.873" timestamp="1577524587770" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1576728943778">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
