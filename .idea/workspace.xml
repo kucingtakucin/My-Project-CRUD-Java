@@ -25,8 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c797b78b-1b2d-483f-9f42-ffe52798518a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copyright/Adam_Arthur_Faizal.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copyright/Mbah_Putih.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copyright/Mbah_Putih_Mulyosugito.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +81,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.22290389" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
+    <property name="settings.editor.selected.configurable" value="copyright.profiles" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -333,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577289618017</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Pembaruan pada Intellij IDEA">
+      <created>1577506238153</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1577506238153</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -367,7 +376,8 @@
     <MESSAGE value="Sedikit perubahan dan menambah menu" />
     <MESSAGE value="Update project secara besar-besaran dan perbaikan secara besar-besaran" />
     <MESSAGE value="Sedikit perbaikan" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sedikit perbaikan" />
+    <MESSAGE value="Pembaruan pada Intellij IDEA" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pembaruan pada Intellij IDEA" />
   </component>
   <component name="WindowStateProjectService">
     <state x="278" y="59" width="800" height="684" key="#Console" timestamp="1576405653288">
@@ -411,21 +421,22 @@
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1732" y="112" width="624" height="551" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1576197733745" />
-    <state x="0" y="27" width="817" height="741" key="CommitChangelistDialog2" timestamp="1577289616971">
+    <state x="256" y="27" width="817" height="741" key="CommitChangelistDialog2" timestamp="1577506237670">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="0" y="27" width="817" height="741" key="CommitChangelistDialog2/0.27.1366.741/1366.0.1366.768@0.27.1366.741" timestamp="1577152223890" />
     <state x="1586" y="0" width="817" height="768" key="CommitChangelistDialog2/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1577183884750" />
-    <state x="0" y="27" width="824" height="741" key="CommitChangelistDialog2/0.27.1366.741@0.27.1366.741" timestamp="1577289616971" />
+    <state x="256" y="27" width="824" height="741" key="CommitChangelistDialog2/0.27.1366.741@0.27.1366.741" timestamp="1577506237670" />
     <state x="1466" y="104" width="1166" height="541" key="DiffContextDialog" timestamp="1576545570780">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
     <state x="1466" y="104" width="1092" height="592" key="DiffContextDialog/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1576545570780" />
     <state x="100" y="127" width="1166" height="541" key="DiffContextDialog/0.27.1366.741@0.27.1366.741" timestamp="1576340909721" />
-    <state x="1822" y="149" width="424" height="491" key="FileChooserDialogImpl" timestamp="1576196636410">
-      <screen x="1366" y="0" width="1366" height="768" />
+    <state x="1366" y="196" width="424" height="491" key="FileChooserDialogImpl" timestamp="1577519986491">
+      <screen x="0" y="27" width="2966" height="873" />
     </state>
     <state x="1822" y="149" width="424" height="491" key="FileChooserDialogImpl/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1576196636410" />
+    <state x="1366" y="196" width="424" height="491" key="FileChooserDialogImpl/0.27.2966.873@0.27.2966.873" timestamp="1577519986491" />
     <state x="2002" y="278" width="535" height="219" key="Github.ShareDialog" timestamp="1575965455312">
       <screen x="1366" y="0" width="1366" height="768" />
     </state>
@@ -462,11 +473,12 @@
     <state width="793" height="565" key="GridCell.Tab.0.right/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1577189216032" />
     <state width="793" height="538" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1577290168760" />
     <state width="786" height="565" key="GridCell.Tab.0.right/0.27.2732.741@0.27.2732.741" timestamp="1576247509428" />
-    <state x="172" y="31" width="1022" height="737" key="SettingsEditor" timestamp="1577431550982">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state x="0" y="27" width="1366" height="741" key="SettingsEditor" timestamp="1577520224402">
+      <screen x="0" y="27" width="2966" height="873" />
     </state>
     <state x="172" y="31" width="1022" height="737" key="SettingsEditor/0.27.1366.741/1366.0.1366.768@0.27.1366.741" timestamp="1577431550982" />
     <state x="1538" y="4" width="1022" height="737" key="SettingsEditor/0.27.1366.741/1366.0.1366.768@1366.0.1366.768" timestamp="1576196690169" />
+    <state x="0" y="27" width="1366" height="741" key="SettingsEditor/0.27.2966.873@0.27.2966.873" timestamp="1577520224402" />
     <state x="278" y="139" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1577351105736">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
