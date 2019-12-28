@@ -1,0 +1,13 @@
+ArgoDwipangga_Eksekutif_1,Argo Dwipangga,Eksekutif,19:45,20:37,Yogyakarta,Rp 295.000
+Argolawu_Eksekutif_1,Argolawu,Eksekutif,08:30,09:21,Yogyakarta,Rp 370.000
+Argowilis_Eksekutif_1,Argowilis,Eksekutif,10:35,11:22,Yogyakarta,Rp 330.000
+Joglosemarkerto_Eksekutif_1,Joglosemarkerto,Eksekutif,05:10,08:16,Semarang,Rp 90.000
+Joglosemarkerto_Ekonomi_1,Joglosemarkerto,Ekonomi,05:10,08:16,Semarang,Rp 55.000
+Joglosemarkerto_Eksekutif_2,Joglosemarkerto,Eksekutif,06:05,09:15,Semarang,Rp 225.000
+Joglosemarkerto_Ekonomi_2,Joglosemarkerto,Ekonomi,06:05,09:15,Semarang,Rp 140.000
+Lodaya_Eksekutif_1,Lodaya,Eksekutif,07:20,08:13,Yogyakarta,Rp 380.000
+Lodaya_Ekonomi_1,Lodaya,Ekonomi,07:20,08:13,Yogyakarta,Rp 300.000
+MalioboroEkspres_Eksekutif_1,MalioboroEkspres,Eksekutif,14:45,15:40,Yogyakarta,Rp 210.000
+MalioboroEkspres_Ekonomi_1,MalioboroEkspres,Ekonomi,14:45,15:40,Yogyakarta,Rp 160.000
+Wijayakusuma_Eksekutif_1,Wijayakusuma,Eksekutif,23:08,23:59,Yogyakarta,Rp 265.000
+Wijayakusuma_Ekonomi_1,Wijayakusuma,Ekonomi,23:08,23:59,Yogyakarta,Rp 210.000
